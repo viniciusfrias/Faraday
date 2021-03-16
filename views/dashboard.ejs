@@ -1,6 +1,6 @@
 <%- include('partials/head')%>
 <body>
-    <h1>Welcome <%= user.name%></h1>
+    <h3>Welcome <%= user.name%></h3>
     <div>
         <img src="" alt="logo">
     </div>
@@ -8,39 +8,22 @@
         <!-- This nav section is there the options are -->
         <nav>
             <div><title>Main Cage</title></div>
-            <div><a href="/<%= user._id%>/logins">Logins</a></div>
-            <div><a href="/<%= user._id%>/accounts">Accounts</a></div>
-            <div><a href="/<%= user._id%>/notes">Notes</a></div>
-            <div><a href="/<%= user._id%>/news">News</a></div>
-            <div><a href="/<%= user._id%>/gen_passwd">Generate Password</a></div>
+            <div><button onclick="addButton(this)" id="logins-btn">Logins</button></div>
+            <div><button id="accounts-btn">Accounts</button></div>
+            <div><button id="notes-btn">Notes</button></div>
+            <div><button id="news-btn">News</button></div>
+            <div><button id="gen-pass-btn">Generate Password</button></div>
         </nav>
+        <hr>
         <!-- This div renders the selected option above -->
-        <div>
-
+        <div id="sub-menu">
+            
         </div>
         <!-- This div renders the final results of the selected option above -->
-        <div>
-            <!-- Container to hold the data, URL, Username and Password -->
-            <div>
-
-            </div>
-            <div>
-                <button>
-                    <!-- button to copy to clipboard -->
-                </button>
-                <button>
-                    <!-- button to open URL in another tab -->
-                </button>
-            </div>
+        <div id="display">
+    
         </div>
     </div>
-    
-    
-    <!-- <% if (user) { %>
-        <p>ALl good here</p>
-        <a href="/logout">Log Out</a>
-    <% } else { %>
-        <a href="/auth/google">Login with Google</a>
-    <% } %> -->
 </body>
+<script src="/javascripts/script.js"></script>
 </html>

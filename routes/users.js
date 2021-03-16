@@ -5,9 +5,18 @@ let getUser = require('../controllers/users.js')
 
 
 /* GET logins from specific user */
-router.get('/logins', getUser.fetchLogin);
+router.get('/logins', getUser.fetchLogins);
 
-// Generate password for user
+/* GET accounts from specific user */
+router.get('/accounts', getUser.fetchAccounts);
+
+/* GET notes from specific user */
+router.get('/notes', getUser.fetchNotes);
+
+/* GET news */
+router.get('/news', getUser.fetchNews);
+
+/* Generate password for user */
 router.get('/gen_passwd', getUser.genPasswd)
 
 module.exports = router;

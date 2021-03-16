@@ -11,12 +11,13 @@ function isLoggedIn(req, res, next) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  console.log(req.user)
+  res.render('index', { title: 'Faraday', user: req.user });
 });
 
-router.get("/login", function(req, res) {
-  res.render('dashboard', {user: req.user})
-})
+// router.get("/login", function(req, res) {
+//   res.render('dashboard', {user: req.user})
+// })
 
 router.get('/auth/google', passport.authenticate("google", { scope: ["profile", "email"]}))
 

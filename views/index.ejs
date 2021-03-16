@@ -4,7 +4,11 @@
       <div class="row">
         <div class="col"><img src="" alt="Logo"></div>
         <div class="col">
-          <a href="/auth/google" rel="noopener noreferrer">Sign in</a>
+          <% if (user){ %>
+            <a href="http://">Log out</a>
+          <% } else{ %>
+            <a href="/auth/google" rel="noopener noreferrer">Sign in</a>
+          <% } %>
         </div>
       </div>
       <div class="row">
@@ -18,10 +22,10 @@
         </div>
       </div>
       <div class="row">
-          <img class="col" src="http://localhost:3000/public/images/azure.png" alt="azure-logo">
-          <img class="col" src="/public/images/facebook.png" alt="facebook-logo">
-          <img class="col" src="/public/images/slack.png" alt="slack-logo">
-          <img class="col" src="/public/images/cisco.png" alt="cisco-logo">
+          <img class="col" src="/images/azure.png" alt="azure-logo">
+          <img class="col" src="/images/facebook.png" alt="facebook-logo">
+          <img class="col" src="/images/slack.png" alt="slack-logo">
+          <img class="col" src="/images/cisco.png" alt="cisco-logo">
         <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
       </div>
     </div>
