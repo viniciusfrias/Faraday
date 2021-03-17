@@ -17,20 +17,7 @@ async function fetchLogins (req,res) {
     // request to Mongo to get the logins, then pass them to the 
     // dashboard view to display inside the unordered list
     // and append the "Add login" button to the end of the list
-    // let response = []
-    // function getLoginsFromUser() {
-    //     User.findById(req.user._id)
-    //     .populate('login').exec((err, user) => {
-    //         Login.find({
-    //             _id: {$nin: user.login}},
-    //             function(err, login) {
-    //                 console.log(login);
-    //                 response.push(login)
-    //             }
-    //         })
-    //     })
-    // }
-    // getLoginsFromUser();
+    
 
     res.send(req.user.login)
     

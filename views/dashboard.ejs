@@ -8,16 +8,22 @@
         <!-- This nav section is there the options are -->
         <nav>
             <div><title>Main Cage</title></div>
-            <div><button onclick="addButton(this)" id="logins-btn">Logins</button></div>
-            <div><button id="accounts-btn">Accounts</button></div>
-            <div><button id="notes-btn">Notes</button></div>
+            <div><button onclick="addButton(this)" id="logins">Logins</button></div>
+            <div><button onclick="addButton(this)" id="accounts">Accounts</button></div>
+            <div><button onclick="addButton(this)" id="notes">Notes</button></div>
             <div><button id="news-btn">News</button></div>
             <div><button id="gen-pass-btn">Generate Password</button></div>
         </nav>
         <hr>
         <!-- This div renders the selected option above -->
         <div id="sub-menu">
-            
+            <!-- <form action="/blabla" method="post">
+                <label for="url">URL</label><br>
+                <input type="text" name="url" id="url-input">
+                <input type="text" name="email" id="email-input">
+                <input type="text" name="password" id="passwd-input">
+                <input type="submit" value="Save">
+            </form> -->
         </div>
         <!-- This div renders the final results of the selected option above -->
         <div id="display">
@@ -25,5 +31,5 @@
         </div>
     </div>
 </body>
-<script src="/javascripts/script.js"></script>
+<script defer src="/javascripts/script.js"></script>
 </html>

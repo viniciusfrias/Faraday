@@ -1,61 +1,68 @@
+// const login = require("../../models/login");
+
 // variables
 const list = document.getElementById('sub-menu')
-
-//caching elements
-const loginsButton = document.getElementById('logins-btn')
-const accountsButton = document.getElementById('accounts-btn')
-const notesButton = document.getElementById('notes-btn')
-const newsButton = document.getElementById('news-btn')
-const genPassButton = document.getElementById('gen-pass-btn')
+const buttons = {
+    logins: {
+        id: 'logins',
+        inputLabelel: 'Add new login',
+        url: 'http://localhost:3000/id/logins',
+        data: ['username', 'password', 'url']
+    },
+    accounts: {
+        id: 'accounts',
+        inputLabelel: 'Add new account',
+        url: 'http://localhost:3000/id/accounts',
+        data: ['account_name', 'category']
+    },
+    notes: {
+        id: 'notes',
+        inputLabelel: 'Add new note',
+        url: 'http://localhost:3000/id/notes',
+        data: ['title', 'note']
+    },
+}
 
 // add event listener for logins-btn
 function addButton(event) {
-    return fetch('http://localhost:3000/id/logins')
-        .then(res => res.json())
-        .then(res => { 
-            createAddButton(loginsFragment);
-            addToFragment(res, loginsFragment);
-        })
-}
+    const currentBtn = document.getElementById('btn');
+    const newBtn = buttons[event.id];
+    const btn = document.createElement('button');
 
-// functions
-// function addToFragment(property, fragmentType){
-//     property.forEach( function (el) {
-//         let li = document.createElement('li')
-//         li.innerHTML = el
-//         fragmentType.appendChild(li)
-//     })
+    if (currentBtn) {
+        currentBtn.parentNode.removeChild(currentBtn);
+    }
 
-//     list.appendChild(fragmentType);
-// }
-
-function createAddButton(parent){
-    let btn = document.createElement('button')
-    btn.innerHTML = "Add new";
-    parent.appendChild(btn)
-    btn.addEventListener( 'click', function(){
-        let form = document.createElement(form);
-        let descriptionInp = document.createElement()
+    btn.id = 'btn';
+    btn.innerHTML = newBtn.inputLabelel;
+    list.appendChild(btn);
+    console.log(newBtn)
+    btn.addEventListener('click', function(){
+        const form = document.createElement('form');
+        form.setAttribute('method', 'POST');
+        form.setAttribute('action', '/id/' + newBtn.id);
+        form.id = 'form';
+        list.appendChild(form);
+        for (d of newBtn.data) {
+            let inputLabel = document.createElement('label');
+            let input = document.createElement('input');
+            inputLabel.setAttribute('for', d);
+            inputLabel.innerHTML = d;
+            input.setAttribute('type', 'text');
+            input.setAttribute('name', d);
+            input.id = d + '-input';
+            form.appendChild(inputLabel);
+            form.appendChild(input);
+        }
+        const inputSub = document.createElement('input');
+        inputSub.setAttribute('type', 'submit');
+        inputSub.setAttribute('value', 'Save');
+        form.appendChild(inputSub);
     })
+
+    return fetch(newBtn.url)
+        .then(res => res.json())
+        .then(res => {
+            console.log(res);
+        });
 }
-
-// // // add event listener for accounts-btn
-// // accountsButton.addEventListener('click', async function() {
-// //     await fetch('http://localhost:3000/id/accounts')
-// // })
-
-// // add event listener for notes-btn
-// notesButton.addEventListener('click', async function() {
-//     await fetch('http://localhost:3000/id/notes')
-// })
-
-// // add event listener for news-btn
-// newsButton.addEventListener('click', async function() {
-//     await fetch('http://localhost:3000/id/news')
-// })
-
-// // add event listener for gen-pass-btn
-// genPassButton.addEventListener('click', async function() {
-//     await fetch('http://localhost:3000/id/gen_passwd')
-// })
-
