@@ -28,16 +28,18 @@ function addButton(event) {
     const currentBtn = document.getElementById('btn');
     const newBtn = buttons[event.id];
     const btn = document.createElement('button');
+    list.innerHTML = "";
 
-    if (currentBtn) {
-        currentBtn.parentNode.removeChild(currentBtn);
-    }
+    // if (currentBtn) {
+    //     currentBtn.parentNode.removeChild(currentBtn);
+    // }
 
     btn.id = 'btn';
     btn.innerHTML = newBtn.inputLabelel;
     list.appendChild(btn);
     console.log(newBtn)
-    btn.addEventListener('click', function(){
+
+    btn.addEventListener('click', function() {
         const form = document.createElement('form');
         form.setAttribute('method', 'POST');
         form.setAttribute('action', '/id/' + newBtn.id);
@@ -59,10 +61,12 @@ function addButton(event) {
         inputSub.setAttribute('value', 'Save');
         form.appendChild(inputSub);
     })
+    
 
     return fetch(newBtn.url)
         .then(res => res.json())
         .then(res => {
             console.log(res);
         });
+
 }

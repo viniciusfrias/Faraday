@@ -27,7 +27,7 @@ router.get("/oauth2callback", passport.authenticate("google",
   failureRedirect: "/"
 }))
 
-router.get('/dashboard', function (req,res) {
+router.get('/dashboard', isLoggedIn,function (req,res) {
   console.log(req.user)
   res.render('dashboard', {user: req.user});
 })

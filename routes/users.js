@@ -19,4 +19,7 @@ router.get('/news', getUser.fetchNews);
 /* Generate password for user */
 router.get('/gen_passwd', getUser.genPasswd)
 
+// POST new content
+router.post('/logins', )
+
 module.exports = router;
