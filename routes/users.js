@@ -24,4 +24,7 @@ router.post('/logins', fromUser.newLogin)
 // POST new account to user
 router.post('/accounts', fromUser.newAccount)
 
+// POST new note to user
+router.post('/notes', fromUser.newNote)
+
 module.exports = router;

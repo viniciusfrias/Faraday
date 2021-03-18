@@ -13,6 +13,7 @@ module.exports = {
     genPasswd,
     newLogin,
     newAccount,
+    newNote
 }
 
 // Post new login entry to database
@@ -24,17 +25,13 @@ async function newLogin(req,res) {
         URL: req.body.url,
         user: req.user._id
     })
-    res.render('dashboard')
+    res.render('dashboard', {user: req.user})
 }
 
 // function to fecth the logins from the user's document
 async function fetchLogins (req,res) {
-    // request to Mongo to get the logins, then pass them to the 
-    // dashboard view to display inside the unordered list
-    // and append the "Add login" button to the end of the list
     let allLogins = await Login.find({}).where('user')
     .equals(req.user._id);
-    console.log(allLogins);
     res.send(allLogins);   
 }
 
@@ -45,7 +42,7 @@ async function newAccount(req,res) {
         category: req.body.category,
         user: req.user._id
     })
-    res.render('dashboard')
+    res.render('dashboard', {user: req.user})
 }
 
 // Function to fecth the accounts from the user's document
@@ -55,10 +52,21 @@ async function fetchAccounts (req,res) {
     res.send(allAccounts)
 }
 
+// Post new notes entry to database
+async function newNote(req,res) {
+    await Note.create({
+        title: req.body.title,
+        note: req.body.note,
+        user: req.user._id
+    })
+    res.render('dashboard', {user: req.user})
+}
+
 // Function to fecth the notes from the user's document
 async function fetchNotes (req,res) {
-    let thisUser = await User.findById(req.params.id)
-    
+    let allNotes = await Note.find({}).where('user')
+    .equals(req.user._id);
+    res.send(allNotes)
 }
 
 // Function to fecth the news from API

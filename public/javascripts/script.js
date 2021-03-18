@@ -67,12 +67,15 @@ function addButton(event) {
         .then(res => res.json())
         .then(res => {
             for (r of res) {
+                // passing the object to an array called valArr
                 const valArr = Object.values(r);
                 let item = document.createElement('button');
                 item.innerHTML = valArr[1];
                 item.id = "item" + res.indexOf(r);
                 list.appendChild(item);
                 list.appendChild(document.createElement('br'));
+                
+                //event listener to display the full data
                 item.addEventListener('click', function() {
                     display.innerHTML = "";
                     const displayList = document.createElement('ul');
@@ -81,7 +84,7 @@ function addButton(event) {
                        let displayItem = document.createElement('li');
                        displayItem.innerHTML = valArr[i];
                        displayList.appendChild(displayItem);
-                       if(i === valArr.length - 5){
+                       if((newBtn.id === 'logins') && (i === valArr.length - 5)){
                            const copyBtn = document.createElement('button');
                            const openTab = document.createElement('button');
                            copyBtn.innerHTML = 'Copy to Clipboard';
