@@ -38,7 +38,9 @@ async function fetchLogins (req,res) {
 
 // function to delete logins
 async function delLogin (req,res) {
-    await Login.findOneAndDelete()
+    console.log(req.params.id)
+    await Login.findByIdAndDelete(req.params.id);
+    res.redirect('/dashboard')
 }
 
 // Post new account entry to database

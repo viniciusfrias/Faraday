@@ -98,8 +98,26 @@ function addButton(event) {
                            displayList.appendChild(delBtn);
                            displayList.appendChild(edtBtn);
                            delBtn.addEventListener('click', function() {
-                               fetch 
-                           })                           
+                               display.innerHTML = "";
+                               const confirm = document.createElement('form');
+                               confirm.id = 'confirm-form';
+                               confirm.setAttribute('action', (newBtn.url + "/" + valArr[0] + "?_method=DELETE"));
+                               confirm.setAttribute('method', 'POST');
+                               const confirmBtn = document.createElement('button');
+                               confirmBtn.id = 'confirm-button';
+                               confirmBtn.setAttribute('type', 'submit');
+                               confirmBtn.innerHTML = 'Press to confirm deletion';
+                               const cancelBtn = document.createElement('button');
+                               cancelBtn.id = 'cancel-button';
+                               cancelBtn.innerHTML = "Cancel";
+                               display.appendChild(confirm);
+                               confirm.appendChild(confirmBtn);
+                               confirm.appendChild(cancelBtn);
+                               cancelBtn.addEventListener('click', function(){
+                                   display.innerHTML = "";
+                               })
+                           })                                                             
+                        
                            if(newBtn.id === 'logins'){
                             const copyBtn = document.createElement('button');
                             const openTab = document.createElement('button');
@@ -126,4 +144,10 @@ function genPassword(){
                 resItem.innerHTML = res;
                 display.appendChild(resItem)
             })
+}
+
+function example_popup() {
+    var w = window.open('', '', 'width=400,height=400,resizeable,scrollbars');
+    w.document.write(document.getElementById('example_text').value);
+    w.document.close(); // needed for chrome and safari
 }

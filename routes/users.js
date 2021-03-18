@@ -28,6 +28,6 @@ router.post('/accounts', fromUser.newAccount)
 router.post('/notes', fromUser.newNote)
 
 //Delete login
-router.delete('/logins', fromUser.delLogin)
+router.delete('/logins/:id', fromUser.delLogin)
 
 module.exports = router;
