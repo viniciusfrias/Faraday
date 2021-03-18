@@ -14,7 +14,12 @@ module.exports = {
     newLogin,
     newAccount,
     newNote,
-    delLogin
+    delLogin,
+    delAccount,
+    delNote,
+    putLogin,
+    putAccount,
+    putNote
 }
 
 // Post new login entry to database
@@ -43,6 +48,18 @@ async function delLogin (req,res) {
     res.redirect('/dashboard')
 }
 
+// function to update login
+async function putLogin (req,res) {
+    console.log(req.params.id);
+    await Login.findByIdAndUpdate(req.params.id, {
+        description: req.body.description,
+        username: req.body.username,
+        password: req.body.password,
+        URL: req.body.url
+    })
+    res.redirect('/dashboard')
+}
+
 // Post new account entry to database
 async function newAccount(req,res) {
     await Account.create({
@@ -58,6 +75,22 @@ async function fetchAccounts (req,res) {
     let allAccounts = await Account.find({}).where('user')
     .equals(req.user._id);
     res.send(allAccounts)
+}
+
+// function to delete account
+async function delAccount (req,res) {
+    console.log(req.params.id)
+    await Account.findByIdAndDelete(req.params.id);
+    res.redirect('/dashboard')
+}
+
+// Update account
+async function putAccount(req,res) {
+    await Account.findByIdAndUpdate(req.params.id, {
+        account_name: req.body.account_name,
+        category: req.body.category,
+    })
+    res.redirect('/dashboard')
 }
 
 // Post new notes entry to database
@@ -77,10 +110,26 @@ async function fetchNotes (req,res) {
     res.send(allNotes)
 }
 
+// function to delete account
+async function delNote (req,res) {
+    console.log(req.params.id)
+    await Note.findByIdAndDelete(req.params.id);
+    res.redirect('/dashboard')
+}
+
 // Function to fecth the news from API
 async function fetchNews (req,res) {
     let thisUser = await User.findById(req.params.id)
     
+}
+
+// Update note
+async function putNote(req,res) {
+    await Note.findByIdAndUpdate(req.params.id, {
+        title: req.body.title,
+        note: req.body.note,
+    })
+    res.redirect('/dashboard')
 }
 
 // function to generate ramdon password using npm module generate-password

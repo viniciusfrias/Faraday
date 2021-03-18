@@ -97,27 +97,62 @@ function addButton(event) {
                            edtBtn.id = 'edt-button';
                            displayList.appendChild(delBtn);
                            displayList.appendChild(edtBtn);
+                           //Event listener for delete button
                            delBtn.addEventListener('click', function() {
-                               display.innerHTML = "";
-                               const confirm = document.createElement('form');
-                               confirm.id = 'confirm-form';
-                               confirm.setAttribute('action', (newBtn.url + "/" + valArr[0] + "?_method=DELETE"));
-                               confirm.setAttribute('method', 'POST');
-                               const confirmBtn = document.createElement('button');
-                               confirmBtn.id = 'confirm-button';
-                               confirmBtn.setAttribute('type', 'submit');
-                               confirmBtn.innerHTML = 'Press to confirm deletion';
-                               const cancelBtn = document.createElement('button');
-                               cancelBtn.id = 'cancel-button';
-                               cancelBtn.innerHTML = "Cancel";
-                               display.appendChild(confirm);
-                               confirm.appendChild(confirmBtn);
-                               confirm.appendChild(cancelBtn);
-                               cancelBtn.addEventListener('click', function(){
-                                   display.innerHTML = "";
-                               })
-                           })                                                             
-                        
+                            display.innerHTML = "";
+                            const confirm = document.createElement('form');
+                            confirm.id = 'confirm-form';
+                            confirm.setAttribute('action', (newBtn.url + "/" + valArr[0] + "?_method=DELETE"));
+                            confirm.setAttribute('method', 'POST');
+                            const confirmBtn = document.createElement('button');
+                            confirmBtn.id = 'confirm-button';
+                            confirmBtn.setAttribute('type', 'submit');
+                            confirmBtn.innerHTML = 'Press to confirm deletion';
+                            const cancelBtn = document.createElement('button');
+                            cancelBtn.id = 'cancel-button';
+                            cancelBtn.innerHTML = "Cancel";
+                            confirm.innerHTML = `<h2> Deleting ${valArr[1]} </h2>`;
+                            display.appendChild(confirm);
+                            confirm.appendChild(confirmBtn);
+                            confirm.appendChild(cancelBtn);
+                            cancelBtn.addEventListener('click', function(){
+                                display.innerHTML = "";
+                                })
+                            })
+                            //Event listener for edit button
+                            edtBtn.addEventListener('click', function() {
+                                display.innerHTML = "";
+                                const form = document.createElement('form');
+                                form.id = 'edit-form';
+                                form.setAttribute('action', (newBtn.url + "/" + valArr[0] + "?_method=PUT"));
+                                form.setAttribute('method', 'POST');
+                                const saveBtn = document.createElement('button');
+                                saveBtn.id = 'save-button';
+                                saveBtn.setAttribute('type', 'submit');
+                                saveBtn.innerHTML = "Save";
+                                const cancelBtn = document.createElement('button');
+                                cancelBtn.id = 'cancel-button';
+                                cancelBtn.innerHTML = "Cancel";
+                                cancelBtn.addEventListener('click', function(){
+                                    display.innerHTML = "";
+                                })
+                                display.appendChild(form);
+                                for (d of newBtn.data) {
+                                    let inputLabel = document.createElement('label');
+                                    let input = document.createElement('input');
+                                    inputLabel.setAttribute('for', d);
+                                    inputLabel.innerHTML = d;
+                                    input.setAttribute('type', 'text');
+                                    input.setAttribute('name', d);
+                                    input.id = d + '-input';
+                                    form.appendChild(inputLabel);
+                                    form.appendChild(input);
+                                }
+                                
+                                form.appendChild(saveBtn);
+                                form.appendChild(cancelBtn);
+                            })
+
                            if(newBtn.id === 'logins'){
                             const copyBtn = document.createElement('button');
                             const openTab = document.createElement('button');
@@ -128,7 +163,7 @@ function addButton(event) {
                             displayList.appendChild(copyBtn);
                             displayList.appendChild(openTab);
                            }
-                       }
+                    }
                    }
                 })               
             }
@@ -144,10 +179,4 @@ function genPassword(){
                 resItem.innerHTML = res;
                 display.appendChild(resItem)
             })
-}
-
-function example_popup() {
-    var w = window.open('', '', 'width=400,height=400,resizeable,scrollbars');
-    w.document.write(document.getElementById('example_text').value);
-    w.document.close(); // needed for chrome and safari
 }

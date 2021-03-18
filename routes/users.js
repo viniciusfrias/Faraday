@@ -27,7 +27,22 @@ router.post('/accounts', fromUser.newAccount)
 // POST new note to user
 router.post('/notes', fromUser.newNote)
 
-//Delete login
+// Delete login
 router.delete('/logins/:id', fromUser.delLogin)
+
+// Delete account
+router.delete('/accounts/:id', fromUser.delAccount)
+
+// Delete note
+router.delete('/notes/:id', fromUser.delNote)
+
+// Update login
+router.put('/logins/:id', fromUser.putLogin)
+
+// Update account
+router.put('/accounts/:id', fromUser.putAccount)
+
+// Update note
+router.put('/notes/:id', fromUser.putNote)
 
 module.exports = router;
