@@ -36,7 +36,8 @@ function addButton(event) {
     list.appendChild(btn);
     console.log(newBtn)
     display.innerHTML = "";
-    //event listener on button that add a new entry
+    
+    //event listener on button that shows form for new data input
     btn.addEventListener('click', function() {
         let form = document.createElement('form');
         form.setAttribute('method', 'POST');
@@ -66,12 +67,33 @@ function addButton(event) {
         .then(res => res.json())
         .then(res => {
             for (r of res) {
+                const valArr = Object.values(r);
                 let item = document.createElement('button');
-                item.innerHTML = Object.values(r)[1];
+                item.innerHTML = valArr[1];
                 item.id = "item" + res.indexOf(r);
                 list.appendChild(item);
-                list.appendChild(document.createElement('br'));               
+                list.appendChild(document.createElement('br'));
+                item.addEventListener('click', function() {
+                    display.innerHTML = "";
+                    const displayList = document.createElement('ul');
+                    display.appendChild(displayList);
+                    for (let i = 2; i < valArr.length - 4; i++){
+                       let displayItem = document.createElement('li');
+                       displayItem.innerHTML = valArr[i];
+                       displayList.appendChild(displayItem);
+                       if(i === valArr.length - 5){
+                           const copyBtn = document.createElement('button');
+                           const openTab = document.createElement('button');
+                           copyBtn.innerHTML = 'Copy to Clipboard';
+                           openTab.innerHTML = "Open in new tab";
+                           copyBtn.id = 'copy-button';
+                           openTab.id = 'open-button';
+                           displayList.appendChild(copyBtn);
+                           displayList.appendChild(openTab);
+                       }
+                   }
+                })               
             }
         });
-
 }
+

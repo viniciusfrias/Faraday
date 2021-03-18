@@ -34,6 +34,7 @@ async function fetchLogins (req,res) {
     // and append the "Add login" button to the end of the list
     let allLogins = await Login.find({}).where('user')
     .equals(req.user._id);
+    console.log(allLogins);
     res.send(allLogins);   
 }
 
