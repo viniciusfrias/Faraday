@@ -84,15 +84,25 @@ function addButton(event) {
                        let displayItem = document.createElement('li');
                        displayItem.innerHTML = valArr[i];
                        displayList.appendChild(displayItem);
-                       if((newBtn.id === 'logins') && (i === valArr.length - 5)){
-                           const copyBtn = document.createElement('button');
-                           const openTab = document.createElement('button');
-                           copyBtn.innerHTML = 'Copy to Clipboard';
-                           openTab.innerHTML = "Open in new tab";
-                           copyBtn.id = 'copy-button';
-                           openTab.id = 'open-button';
-                           displayList.appendChild(copyBtn);
-                           displayList.appendChild(openTab);
+                       if(i === valArr.length - 5){
+                           const delBtn = document.createElement('button');
+                           const edtBtn = document.createElement('button');
+                           delBtn.innerHTML = "Delete";
+                           edtBtn.innerHTML = "Edit";
+                           delBtn.id = 'del-button';
+                           edtBtn.id = 'edt-button';
+                           displayList.appendChild(delBtn);
+                           displayList.appendChild(edtBtn);                           
+                           if(newBtn.id === 'logins'){
+                            const copyBtn = document.createElement('button');
+                            const openTab = document.createElement('button');
+                            copyBtn.innerHTML = 'Copy to Clipboard';
+                            openTab.innerHTML = "Open in new tab";
+                            copyBtn.id = 'copy-button';
+                            openTab.id = 'open-button';
+                            displayList.appendChild(copyBtn);
+                            displayList.appendChild(openTab);
+                           }
                        }
                    }
                 })               
