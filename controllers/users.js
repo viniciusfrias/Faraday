@@ -13,7 +13,8 @@ module.exports = {
     genPasswd,
     newLogin,
     newAccount,
-    newNote
+    newNote,
+    delLogin
 }
 
 // Post new login entry to database
@@ -33,6 +34,11 @@ async function fetchLogins (req,res) {
     let allLogins = await Login.find({}).where('user')
     .equals(req.user._id);
     res.send(allLogins);   
+}
+
+// function to delete logins
+async function delLogin (req,res) {
+    await Login.findOneAndDelete()
 }
 
 // Post new account entry to database
@@ -76,8 +82,12 @@ async function fetchNews (req,res) {
 }
 
 // function to generate ramdon password using npm module generate-password
-function genPasswd(){
+function genPasswd(req,res){
     let password = generator.generate({
-        
-    })
+        length: 14,
+        numbers: true,
+        symbols: true
+    });
+    
+    res.send(`"${password}"`);
 }

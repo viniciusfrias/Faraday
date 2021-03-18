@@ -3,3 +3,8 @@ body {
   width: 100vw;
 }
 
+@use "@material/image-list";
+
+.my-image-list {
+  @include image-list.standard-columns(5);
+}

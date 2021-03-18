@@ -1,6 +1,10 @@
 // variables
 const list = document.getElementById('sub-menu')
 const display = document.getElementById('display')
+const genPassBtn = document.getElementById('gen-pass-btn');
+
+// event listener for password generator
+genPassBtn.addEventListener('click', genPassword);
 
 //Object to reference User model
 const buttons = {
@@ -92,7 +96,10 @@ function addButton(event) {
                            delBtn.id = 'del-button';
                            edtBtn.id = 'edt-button';
                            displayList.appendChild(delBtn);
-                           displayList.appendChild(edtBtn);                           
+                           displayList.appendChild(edtBtn);
+                           delBtn.addEventListener('click', function() {
+                               fetch 
+                           })                           
                            if(newBtn.id === 'logins'){
                             const copyBtn = document.createElement('button');
                             const openTab = document.createElement('button');
@@ -110,3 +117,13 @@ function addButton(event) {
         });
 }
 
+function genPassword(){
+    fetch('http://localhost:3000/id/gen_passwd')
+        .then(res => res.json())
+            .then(res => {
+                console.log(res)
+                const resItem = document.createElement('h2');
+                resItem.innerHTML = res;
+                display.appendChild(resItem)
+            })
+}
