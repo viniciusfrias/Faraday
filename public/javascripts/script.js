@@ -1,13 +1,14 @@
-// const login = require("../../models/login");
-
 // variables
 const list = document.getElementById('sub-menu')
+const display = document.getElementById('display')
+
+//Object to reference User model
 const buttons = {
     logins: {
         id: 'logins',
         inputLabelel: 'Add new login',
         url: 'http://localhost:3000/id/logins',
-        data: ['username', 'password', 'url']
+        data: ['description','username', 'password', 'url']
     },
     accounts: {
         id: 'accounts',
@@ -30,21 +31,19 @@ function addButton(event) {
     const btn = document.createElement('button');
     list.innerHTML = "";
 
-    // if (currentBtn) {
-    //     currentBtn.parentNode.removeChild(currentBtn);
-    // }
-
     btn.id = 'btn';
     btn.innerHTML = newBtn.inputLabelel;
     list.appendChild(btn);
     console.log(newBtn)
-
+    display.innerHTML = "";
+    //event listener on button that add a new entry
     btn.addEventListener('click', function() {
-        const form = document.createElement('form');
+        let form = document.createElement('form');
         form.setAttribute('method', 'POST');
         form.setAttribute('action', '/id/' + newBtn.id);
         form.id = 'form';
-        list.appendChild(form);
+        display.innerHTML = "";
+        display.appendChild(form);
         for (d of newBtn.data) {
             let inputLabel = document.createElement('label');
             let input = document.createElement('input');
@@ -62,11 +61,17 @@ function addButton(event) {
         form.appendChild(inputSub);
     })
     
-
+    //fetching the existing data from user in the database
     return fetch(newBtn.url)
         .then(res => res.json())
         .then(res => {
-            console.log(res);
+            for (r of res) {
+                let item = document.createElement('button');
+                item.innerHTML = Object.values(r)[1];
+                item.id = "item" + res.indexOf(r);
+                list.appendChild(item);
+                list.appendChild(document.createElement('br'));               
+            }
         });
 
 }

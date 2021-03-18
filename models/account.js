@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const accountSchema = new Schema({
     account_name: String,
-    category: String
+    category: String,
+    user: {type: Schema.Types.ObjectId, ref: 'User'}
 }, {
     timestamps: true
 })

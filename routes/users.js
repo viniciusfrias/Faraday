@@ -1,25 +1,27 @@
 var express = require('express');
 var router = express.Router();
-let user = require('../models/user')
-let getUser = require('../controllers/users.js')
+let fromUser = require('../controllers/users.js')
 
 
 /* GET logins from specific user */
-router.get('/logins', getUser.fetchLogins);
+router.get('/logins', fromUser.fetchLogins);
 
 /* GET accounts from specific user */
-router.get('/accounts', getUser.fetchAccounts);
+router.get('/accounts', fromUser.fetchAccounts);
 
 /* GET notes from specific user */
-router.get('/notes', getUser.fetchNotes);
+router.get('/notes', fromUser.fetchNotes);
 
 /* GET news */
-router.get('/news', getUser.fetchNews);
+router.get('/news', fromUser.fetchNews);
 
 /* Generate password for user */
-router.get('/gen_passwd', getUser.genPasswd)
+router.get('/gen_passwd', fromUser.genPasswd)
 
-// POST new content
-router.post('/logins', )
+// POST new logins to user
+router.post('/logins', fromUser.newLogin)
+
+// POST new account to user
+router.post('/accounts', fromUser.newAccount)
 
 module.exports = router;

@@ -6,7 +6,8 @@ const loginSchema = new Schema({
     description: {type: String, required: true},
     username: {type: String, required: true},
     password: {type: String, required: true},
-    URL: mongoose.SchemaTypes.Url
+    URL: mongoose.SchemaTypes.Url,
+    user: {type: Schema.Types.ObjectId, ref: 'User'}
 }, {
     timestamps: true
 })
