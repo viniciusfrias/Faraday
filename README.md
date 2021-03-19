@@ -21,6 +21,7 @@ The encryption at rest is being handled by MongoDB Atlas using the encrypt-then-
 ##
 
 You can access the app going  <a href="https://faraday-password-manager.herokuapp.com/"> HERE </a>.
+I you want to follow the project roadmap and see what new features will be added or are already deployed, check my <a href="https://trello.com/b/MhMdpxMR/ga-project2"> Trello Board </a>.
 
 Project Languages -
 
