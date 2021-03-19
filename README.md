@@ -20,7 +20,7 @@ The encryption at rest is being handled by MongoDB Atlas using the encrypt-then-
 
 ##
 
-You can access the app going  <a href="https://github.com/Ckrcok/MyProjects/tree/main/Connect%20Four"> HERE </a>.
+You can access the app going  <a href="https://faraday-password-manager.herokuapp.com/"> HERE </a>.
 
 Project Languages -
 
