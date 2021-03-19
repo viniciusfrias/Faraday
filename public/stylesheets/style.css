@@ -1,10 +1,66 @@
 body {
   height: 100vh;
-  width: 100vw;
+  margin: 20px auto;
 }
 
-@use "@material/image-list";
+#logo {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
 
-.my-image-list {
-  @include image-list.standard-columns(5);
+#logo-dash {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+#header {
+  margin-bottom: 150px;
+}
+
+#logBtn{
+  text-align: center;
+}
+
+#welcome {
+  text-align: center;
+}
+
+#container {
+  height: 50vh;
+  display: flex;
+  flex-direction: row;
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+  height: 100%;
+  margin: 0px;
+}
+
+button {
+  width: 180px;
+  height: auto;
+}
+
+#container-img {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#central-img {
+  margin: auto 0px;
+  text-align: center;
+}
+
+#disclosure {
+  text-align: center;
 }

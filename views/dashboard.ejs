@@ -1,27 +1,23 @@
 <%- include('partials/head')%>
-<body>
-    <h3>Welcome <%= user.name%></h3>
-    <div>
-        <img src="" alt="logo">
+<body class="p-3 mb-2 bg-light text-dark">
+    <div id="header">
+        <h3 style="text-align: center;">Welcome <%= user.name%></h3>
+        <img id="logo-dash" src="/images/invert.png" alt="logo">
     </div>
-    <div>
+    <div id="container" class="container-fluid row align-items-center">
         <!-- This nav section is there the options are -->
-        <nav>
-            <div><title>Main Cage</title></div>
-            <div><button onclick="addButton(this)" id="logins">Logins</button></div>
-            <div><button onclick="addButton(this)" id="accounts">Accounts</button></div>
-            <div><button onclick="addButton(this)" id="notes">Notes</button></div>
-            <div><button id="news-btn">News</button></div>
-            <div><button id="gen-pass-btn">Generate Password</button></div>
+        <nav id="menu" class="col align-self-start">
+            <button class="shadow-lg p-3 mb-5 bg-body rounded" onclick="addButton(this)" id="logins">Logins</button>
+            <button class="shadow-lg p-3 mb-5 bg-body rounded" onclick="addButton(this)" id="accounts">Accounts</button>
+            <button class="shadow-lg p-3 mb-5 bg-body rounded" onclick="addButton(this)" id="notes">Notes</button>
+            <button class="shadow-lg p-3 mb-5 bg-body rounded" id="news-btn">News</button>
+            <button class="shadow-lg p-3 mb-5 bg-body rounded" id="gen-pass-btn">Generate Password</button>
         </nav>
-        <hr>
         <!-- This div renders the selected option above -->
-        <div id="sub-menu">
+        <div id="sub-menu" class="col align-self-start container-fluid row align-items-center">
         </div>
-        <hr>
         <!-- This div renders the final results of the selected option above -->
-        <div id="display">
-    
+        <div id="display" class="col align-self-start container-fluid align-items-center">
         </div>
     </div>
 </body>

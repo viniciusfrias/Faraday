@@ -33,6 +33,7 @@ function addButton(event) {
     const currentBtn = document.getElementById('btn');
     const newBtn = buttons[event.id];
     const btn = document.createElement('button');
+    btn.setAttribute('class', 'class="btn btn-secondary');
     list.innerHTML = "";
 
     btn.id = 'btn';
@@ -76,6 +77,7 @@ function addButton(event) {
                 let item = document.createElement('button');
                 item.innerHTML = valArr[1];
                 item.id = "item" + res.indexOf(r);
+                item.setAttribute('class', 'class="btn btn-secondary');
                 list.appendChild(item);
                 list.appendChild(document.createElement('br'));
                 
@@ -86,11 +88,13 @@ function addButton(event) {
                     display.appendChild(displayList);
                     for (let i = 2; i < valArr.length - 4; i++){
                        let displayItem = document.createElement('li');
-                       displayItem.innerHTML = valArr[i];
+                       displayItem.innerHTML = `${newBtn.data[i - 1]}:` + valArr[i];
                        displayList.appendChild(displayItem);
                        if(i === valArr.length - 5){
                            const delBtn = document.createElement('button');
                            const edtBtn = document.createElement('button');
+                           delBtn.setAttribute('class', 'class="btn btn-danger');
+                           edtBtn.setAttribute('class', 'class="btn btn-warning');
                            delBtn.innerHTML = "Delete";
                            edtBtn.innerHTML = "Edit";
                            delBtn.id = 'del-button';
@@ -105,10 +109,12 @@ function addButton(event) {
                             confirm.setAttribute('action', (newBtn.url + "/" + valArr[0] + "?_method=DELETE"));
                             confirm.setAttribute('method', 'POST');
                             const confirmBtn = document.createElement('button');
+                            confirmBtn.setAttribute('class', 'btn btn-success')
                             confirmBtn.id = 'confirm-button';
                             confirmBtn.setAttribute('type', 'submit');
                             confirmBtn.innerHTML = 'Press to confirm deletion';
                             const cancelBtn = document.createElement('button');
+                            cancelBtn.setAttribute('class', 'btn btn-light')
                             cancelBtn.id = 'cancel-button';
                             cancelBtn.innerHTML = "Cancel";
                             confirm.innerHTML = `<h2> Deleting ${valArr[1]} </h2>`;
@@ -127,10 +133,12 @@ function addButton(event) {
                                 form.setAttribute('action', (newBtn.url + "/" + valArr[0] + "?_method=PUT"));
                                 form.setAttribute('method', 'POST');
                                 const saveBtn = document.createElement('button');
+                                saveBtn.setAttribute('class', 'btn btn-success')
                                 saveBtn.id = 'save-button';
                                 saveBtn.setAttribute('type', 'submit');
                                 saveBtn.innerHTML = "Save";
                                 const cancelBtn = document.createElement('button');
+                                cancelBtn.setAttribute('class', 'btn btn-light')
                                 cancelBtn.id = 'cancel-button';
                                 cancelBtn.innerHTML = "Cancel";
                                 cancelBtn.addEventListener('click', function(){
@@ -156,6 +164,8 @@ function addButton(event) {
                            if(newBtn.id === 'logins'){
                             const copyBtn = document.createElement('button');
                             const openTab = document.createElement('button');
+                            copyBtn.setAttribute('class', 'btn btn-primary');
+                            openTab.setAttribute('class', 'btn btn-primary');
                             copyBtn.innerHTML = 'Copy to Clipboard';
                             openTab.innerHTML = "Open in new tab";
                             copyBtn.id = 'copy-button';
@@ -171,6 +181,7 @@ function addButton(event) {
 }
 
 function genPassword(){
+    display.innerHTML = "";
     fetch('http://localhost:3000/id/gen_passwd')
         .then(res => res.json())
             .then(res => {
@@ -179,4 +190,5 @@ function genPassword(){
                 resItem.innerHTML = res;
                 display.appendChild(resItem)
             })
+    // Create new button to copy password to clipboard
 }
