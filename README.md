@@ -49,8 +49,8 @@ Project Goals Future -
 
 ### Landing Page
 
-[Imgur](https://i.imgur.com/Ls0hp3m.png) 
+[![](https://i.imgur.com/Ls0hp3m.png)](#)
 
 ### Dashboard
 
-https://i.imgur.com/taU6SaJ.png
+[![](https://i.imgur.com/taU6SaJ.png)](#)
