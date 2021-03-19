@@ -53,4 +53,4 @@ Project Goals Future -
 
 ### Dashboard
 
-[Imgur](https://i.imgur.com/taU6SaJ.png)
+(https://i.imgur.com/taU6SaJ.png)
