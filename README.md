@@ -16,8 +16,6 @@ Users are able to store logins containing username, password and the URL, as wel
 
 At this moment, access to the app is limited to Google OAuth, however it will be transitioned to Master Password architecture access in the future.
 
-The encryption at rest is being handled by MongoDB Atlas using the encrypt-then-MAC approach combined with either a deterministic or random initialization vector to encrypt field values.
-
 ##
 
 You can access the app going  <a href="https://faraday-password-manager.herokuapp.com/"> HERE </a>.
@@ -32,6 +30,7 @@ Project Languages -
 
 Project Goals near future -
 
+- Implement encryption with user key management in the server side
 - A better, responsive and user friendly front end
 - Make "Copy-to-clipboard" and "Open in a new tab" features enabled
 - Options for generate ramdom passoword
